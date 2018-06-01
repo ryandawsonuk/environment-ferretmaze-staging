@@ -40,4 +40,4 @@ keycloak:
     dbVendor: H2
 example-runtime-bundle:
   db:
-    uri: "jdbc:postgresql://jx-staging-postgresql:5432/postgres"
+    pass: activiti
