@@ -26,7 +26,7 @@ rabbitmq:
   rabbitmq:
     username: "guest"
     password: "guest"
-postgresql:
+activitipostgresql:
    postgresPassword: activiti
 keycloak:
   keycloak:
@@ -38,3 +38,6 @@ keycloak:
     persistence:
       deployPostgres: false
     dbVendor: H2
+example-runtime-bundle:
+  db:
+    name: activitipostgresql
