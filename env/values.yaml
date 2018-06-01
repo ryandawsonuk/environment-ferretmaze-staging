@@ -21,3 +21,20 @@ expose:
   Annotations:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-delete-policy: hook-succeeded
+
+rabbitmq:
+  rabbitmq:
+    username: "guest"
+    password: "guest"
+postgresql:
+   postgresPassword: activiti
+keycloak:
+  keycloak:
+    image:
+      repository: activiti/activiti-cloud-sso-idm
+      tag: latest
+    username: admin
+    password: admin
+    persistence:
+      deployPostgres: false
+    dbVendor: H2
