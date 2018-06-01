@@ -13,7 +13,8 @@ build: clean
 	helm dependency build ${DIR}
 	helm lint ${DIR}
 
-install: 
+install:
+	helm upgrade ${NAMESPACE} ${DIR} --install --namespace ${NAMESPACE} --dry-run --debug
 	helm upgrade ${NAMESPACE} ${DIR} --install --namespace ${NAMESPACE} --debug
 
 delete:

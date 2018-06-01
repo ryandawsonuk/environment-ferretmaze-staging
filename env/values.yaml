@@ -38,6 +38,3 @@ keycloak:
     persistence:
       deployPostgres: false
     dbVendor: H2
-example-runtime-bundle:
-  db:
-    pass: activiti
