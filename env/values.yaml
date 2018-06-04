@@ -38,6 +38,10 @@ keycloak:
     persistence:
       deployPostgres: false
     dbVendor: H2
+    ingress:
+      enabled: true
+      hosts:
+       - "jx-staging-example-keycloak-http.jx-staging.activiti.envalfresco.com"
 example-runtime-bundle:
   db:
     name: activitipostgresql
