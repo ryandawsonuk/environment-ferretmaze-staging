@@ -42,6 +42,12 @@ keycloak:
       enabled: true
       hosts:
        - "jx-staging-example-keycloak-http.jx-staging.activiti.envalfresco.com"
+    livenessProbe:
+      initialDelaySeconds: 140
 example-runtime-bundle:
   db:
     name: activitipostgresql
+
+global:
+  keycloak:
+    url: "http://jx-staging-example-keycloak-http.jx-staging.activiti.envalfresco.com/auth"
