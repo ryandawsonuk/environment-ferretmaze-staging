@@ -44,7 +44,9 @@ keycloak:
        - "jx-staging-example-keycloak-http.jx-staging.activiti.envalfresco.com"
     livenessProbe:
       initialDelaySeconds: 140
-    preStartScript: /opt/jboss/keycloak/bin/kcadm.sh create partialImport -r springboot -s ifResourceExists=FAIL -o -f /opt/jboss/keycloak/springboot-realm.json
+    preStartScript: |
+                         /opt/jboss/keycloak/bin/kcadm.sh create realms -s realm=springboot -s enabled=true
+                         /opt/jboss/keycloak/bin/kcadm.sh create partialImport -r springboot -s ifResourceExists=FAIL -o -f /opt/jboss/keycloak/springboot-realm.json
 example-runtime-bundle:
   db:
     name: activitipostgresql
