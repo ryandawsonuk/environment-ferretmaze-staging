@@ -43,7 +43,10 @@ keycloak:
       hosts:
        - "jx-staging-example-keycloak-http.jx-staging.activiti.envalfresco.com"
     livenessProbe:
-      initialDelaySeconds: 140
+      initialDelaySeconds: 200
+      timeoutSeconds: 7
+    readinessProbe:
+      timeoutSeconds: 7
     preStartScript: /opt/jboss/keycloak/bin/standalone.sh -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/opt/jboss/keycloak/springboot-realm.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
 example-runtime-bundle:
   db:
