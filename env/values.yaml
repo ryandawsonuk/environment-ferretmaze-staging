@@ -44,7 +44,8 @@ keycloak:
        - "jx-staging-example-keycloak-http.jx-staging.activiti.envalfresco.com"
     livenessProbe:
       initialDelaySeconds: 140
-    preStartScript: /opt/jboss/keycloak/bin/standalone.sh -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/opt/jboss/keycloak/springboot-realm.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
+    startParams: -Dkeycloak.import=/opt/jboss/keycloak/springboot-realm.json
+#    preStartScript: /opt/jboss/keycloak/bin/standalone.sh -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/opt/jboss/keycloak/springboot-realm.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
 example-runtime-bundle:
   db:
     name: activitipostgresql
