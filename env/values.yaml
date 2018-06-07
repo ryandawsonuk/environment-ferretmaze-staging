@@ -21,3 +21,12 @@ expose:
   Annotations:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-delete-policy: hook-succeeded
+
+rabbitmq:
+  rabbitmq:
+    username: "guest"
+    password: "guest"
+  ingress:
+    enabled: true
+#postgresql:
+#   postgresPassword: activiti
