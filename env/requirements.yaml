@@ -13,3 +13,6 @@ dependencies:
 - name: ttc-query-campaign
   repository: http://jenkins-x-chartmuseum:8080
   version: 1.0.17
+- name: ttc-connectors-ranking
+  repository: http://jenkins-x-chartmuseum:8080
+  version: 1.0.11
