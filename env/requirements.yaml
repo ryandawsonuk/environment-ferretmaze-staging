@@ -28,3 +28,6 @@ dependencies:
 - name: ttc-connectors-reward
   repository: http://jenkins-x-chartmuseum:8080
   version: 1.0.11
+- name: ttc-rb-english-campaign
+  repository: http://jenkins-x-chartmuseum:8080
+  version: 1.0.27
