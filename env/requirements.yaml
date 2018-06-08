@@ -21,7 +21,7 @@ dependencies:
   version: 1.0.17
 - name: ttc-connectors-processing
   repository: http://jenkins-x-chartmuseum:8080
-  version: 1.0.12
+  version: 1.0.13
 - name: ttc-infra-gateway
   repository: http://jenkins-x-chartmuseum:8080
   version: 1.0.8
