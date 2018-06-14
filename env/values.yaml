@@ -30,6 +30,8 @@ rabbitmq:
     enabled: false
 activitipostgresql:
    postgresPassword: activiti
+querypostgresql:
+   postgresPassword: query
 keycloak:
   keycloak:
     username: admin
@@ -53,7 +55,9 @@ keycloak:
 example-runtime-bundle:
   db:
     name: activitipostgresql
-
+activiti-cloud-query:
+  db:
+    name: querypostgresql
 global:
   keycloak:
     url: "http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/auth"
