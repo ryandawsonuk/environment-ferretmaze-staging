@@ -4,6 +4,7 @@ metadata:
   name: {{ .Release.Name }}-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/enable-cors: "true"
 spec:
   rules:
   - host: jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com
