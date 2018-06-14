@@ -12,7 +12,7 @@ dependencies:
   version: 0.8.0
 - name: example-runtime-bundle
   repository: http://jenkins-x-chartmuseum:8080
-  version: 7.0.17
+  version: 7.0.18
 - name: rabbitmq
   repository: https://kubernetes-charts.storage.googleapis.com
   version: 0.8.0
