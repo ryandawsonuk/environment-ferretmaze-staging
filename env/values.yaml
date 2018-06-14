@@ -36,8 +36,7 @@ keycloak:
     password: admin
     persistence:
       deployPostgres: false
-    dbVendor: H2
-    dbPassword: keycloak
+      dbVendor: H2
     ingress:
       enabled: true
       hosts:
