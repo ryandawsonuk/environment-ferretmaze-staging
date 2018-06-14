@@ -16,9 +16,6 @@ dependencies:
 - name: ttc-infra-gateway
   repository: http://jenkins-x-chartmuseum:8080
   version: 1.0.9
-- name: ttc-connectors-reward
-  repository: http://jenkins-x-chartmuseum:8080
-  version: 1.0.12
 - name: ttc-rb-english-campaign
   repository: http://jenkins-x-chartmuseum:8080
   version: 1.0.28
