@@ -28,5 +28,34 @@ rabbitmq:
     password: "guest"
   ingress:
     enabled: true
-#postgresql:
-#   postgresPassword: activiti
+activitipostgresql:
+   postgresPassword: activiti
+keycloak:
+  keycloak:
+    username: admin
+    password: admin
+    persistence:
+      deployPostgres: false
+    dbVendor: H2
+    ingress:
+      enabled: true
+      hosts:
+       - "jx-staging-example-keycloak-http.jx-staging.activiti.envalfresco.com"
+    livenessProbe:
+      initialDelaySeconds: 140
+    extraVolumes: |
+      - name: realm-secret
+        secret:
+          secretName: {{ template "env.fullname" . }}-realm-secret
+    extraVolumeMounts: |
+      - name: realm-secret
+        mountPath: "/realm/"
+        readOnly: true
+    extraArgs: -Dkeycloak.import=/realm/activiti-realm.json
+example-runtime-bundle:
+  db:
+    name: activitipostgresql
+
+global:
+  keycloak:
+    url: "http://jx-staging-example-keycloak-http.jx-staging.activiti.envalfresco.com/auth"
