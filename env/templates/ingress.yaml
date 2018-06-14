@@ -6,14 +6,18 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: jx-staging-example-keycloak-http.jx-staging.activiti.envalfresco.com
+  - host: jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com
     http:
       paths:
       - path: /rb-my-app
         backend:
           serviceName: {{ .Release.Name }}-example-runtime-bundle
           servicePort: 80
-#      - path: /bar
-#        backend:
-#          serviceName: s2
-#          servicePort: 80
+      - path: /
+        backend:
+          serviceName: {{ .Release.Name }}-keycloak-http
+          servicePort: 80
+      - path: /bar
+        backend:
+          serviceName: {{ .Release.Name }}-rabbitmq
+          servicePort: 15672

@@ -27,7 +27,7 @@ rabbitmq:
     username: "guest"
     password: "guest"
   ingress:
-    enabled: true
+    enabled: false
 activitipostgresql:
    postgresPassword: activiti
 keycloak:
@@ -38,7 +38,7 @@ keycloak:
       deployPostgres: false
       dbVendor: H2
     ingress:
-      enabled: true
+      enabled: false
       hosts:
        - "jx-staging-example-keycloak-http.jx-staging.activiti.envalfresco.com"
     livenessProbe:
