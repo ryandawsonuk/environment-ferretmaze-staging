@@ -13,11 +13,11 @@ spec:
         backend:
           serviceName: {{ .Release.Name }}-example-runtime-bundle
           servicePort: 80
-      - path: /auth
+      - path: /
         backend:
           serviceName: {{ .Release.Name }}-keycloak-http
           servicePort: 80
-      - path: /bar
+      - path: /rabbitmq
         backend:
           serviceName: {{ .Release.Name }}-rabbitmq
           servicePort: 15672

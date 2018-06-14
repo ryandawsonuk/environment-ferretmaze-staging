@@ -39,8 +39,6 @@ keycloak:
       dbVendor: H2
     ingress:
       enabled: false
-      hosts:
-       - "jx-staging-example-keycloak-http.jx-staging.activiti.envalfresco.com"
     livenessProbe:
       initialDelaySeconds: 140
     extraVolumes: |
@@ -58,4 +56,4 @@ example-runtime-bundle:
 
 global:
   keycloak:
-    url: "http://jx-staging-example-keycloak-http.jx-staging.activiti.envalfresco.com/auth"
+    url: "http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/auth"
