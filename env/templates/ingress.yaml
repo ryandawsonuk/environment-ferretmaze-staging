@@ -21,3 +21,7 @@ spec:
         backend:
           serviceName: {{ .Release.Name }}-rabbitmq
           servicePort: 15672
+      - path: /query
+        backend:
+          serviceName: {{ .Release.Name }}-activiti-cloud-query
+          servicePort: 80
