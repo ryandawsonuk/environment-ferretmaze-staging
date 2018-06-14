@@ -46,7 +46,7 @@ keycloak:
     extraVolumes: |
       - name: realm-secret
         secret:
-          secretName: {{ template "env.fullname" . }}-realm-secret
+          secretName: {{ .Release.Name }}-realm-secret
     extraVolumeMounts: |
       - name: realm-secret
         mountPath: "/realm/"
