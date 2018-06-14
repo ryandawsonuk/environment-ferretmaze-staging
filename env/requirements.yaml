@@ -7,9 +7,10 @@ dependencies:
   name: exposecontroller
   repository: http://chartmuseum.build.cd.jenkins-x.io
   version: 2.3.58
-- name: rabbitmq
+- alias: rabbitmq
+  name: rabbitmq-ha
   repository: https://kubernetes-charts.storage.googleapis.com
-  version: 0.8.0
+  version: 1.6.0
 - name: example-runtime-bundle
   repository: http://jenkins-x-chartmuseum:8080
   version: 7.0.19

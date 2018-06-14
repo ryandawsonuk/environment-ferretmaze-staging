@@ -5,6 +5,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/enable-cors: "true"
+#    nginx.org/websocket-services: "ws-svc"
 spec:
   rules:
   - host: jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com
@@ -26,3 +27,8 @@ spec:
         backend:
           serviceName: {{ .Release.Name }}-activiti-cloud-query
           servicePort: 80
+# for ws would need to set ws port and ideally configure path to match apollo
+#      - path: /ws
+#        backend:
+#          serviceName: {{ .Release.Name }}-activiti-cloud-query
+#          servicePort: 8008

@@ -23,9 +23,10 @@ expose:
     helm.sh/hook-delete-policy: hook-succeeded
 
 rabbitmq:
-  rabbitmq:
-    username: "guest"
-    password: "guest"
+  rabbitmqUsername: "guest"
+  rabbitmqPassword: "guest"
+  rabbitmqSTOMPPlugin.enabled: true
+  replicaCount: 1
   ingress:
     enabled: false
 activitipostgresql:
