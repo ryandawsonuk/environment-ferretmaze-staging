@@ -29,6 +29,10 @@ spec:
         backend:
           serviceName: {{ .Release.Name }}-activiti-cloud-query
           servicePort: 80
+      - path: /audit
+        backend:
+          serviceName: {{ .Release.Name }}-activiti-cloud-audit
+          servicePort: 80
 # for ws would need to set ws port and ideally configure path to match apollo
 #      - path: /ws
 #        backend:
