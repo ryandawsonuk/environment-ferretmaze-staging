@@ -6,6 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-headers: "X-Forwarded-For, X-Forwarded-Proto, X-Forwarded-Port, X-Forwarded-Prefix"
+    nginx.ingress.kubernetes.io/x-forwarded-prefix: "true"
 #    nginx.org/websocket-services: "ws-svc"
 spec:
   rules:
