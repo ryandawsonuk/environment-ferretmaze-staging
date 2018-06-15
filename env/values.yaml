@@ -51,9 +51,15 @@ keycloak:
       - name: realm-secret
         secret:
           secretName: {{ .Release.Name }}-realm-secret
+      - name: client-secret
+        secret:
+          secretName: {{ .Release.Name }}-client-secret
     extraVolumeMounts: |
       - name: realm-secret
         mountPath: "/realm/"
+        readOnly: true
+      - name: client-secret
+        mountPath: "/client/"
         readOnly: true
     extraArgs: -Dkeycloak.import=/realm/activiti-realm.json
 example-runtime-bundle:
