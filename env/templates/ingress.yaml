@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-headers: "X-Forwarded-For, X-Forwarded-Proto, X-Forwarded-Port, X-Forwarded-Prefix"
     nginx.ingress.kubernetes.io/x-forwarded-prefix: "true"
-#    nginx.org/websocket-services: "ws-svc"
+    nginx.org/websocket-services: "{{ .Release.Name }}-activiti-cloud-query"
 spec:
   rules:
   - host: jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com
@@ -33,8 +33,5 @@ spec:
         backend:
           serviceName: {{ .Release.Name }}-activiti-cloud-audit
           servicePort: 80
-# for ws would need to set ws port and ideally configure path to match apollo
-#      - path: /ws
-#        backend:
-#          serviceName: {{ .Release.Name }}-activiti-cloud-query
-#          servicePort: 8008
+# to test ws would need to configure apollo to use path
+# as apollo client no longer expects to be on a gw path - https://github.com/Activiti/activiti-cloud-query-service/commit/0e05bf321d59d7373c5c0fa40506b514704dc92c
