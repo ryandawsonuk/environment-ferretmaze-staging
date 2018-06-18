@@ -15,8 +15,8 @@ dependencies:
   repository: https://kubernetes-charts.storage.googleapis.com
   version: 0.11.0
 - name: infrastructure
-  repository: file://subcharts/infrastructure
+  repository: file://charts/infrastructure
   version: 0.1.0
 - name: application
-  repository: file://subcharts/application
+  repository: file://charts/application
   version: 0.1.0
