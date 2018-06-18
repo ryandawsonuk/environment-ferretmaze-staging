@@ -22,31 +22,13 @@ expose:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-delete-policy: hook-succeeded
 
-rabbitmq:
-  enabled: true
-  rabbitmqUsername: "guest"
-  rabbitmqPassword: "guest"
-  rabbitmqSTOMPPlugin:
-    enabled: true
-  rbac:
-    create: false
-  replicaCount: 1
-  ingress:
-    enabled: false
 activitipostgresql:
    postgresPassword: activiti
-querypostgresql:
-   postgresPassword: query
 
 example-runtime-bundle:
   db:
     name: activitipostgresql
-activiti-cloud-query:
-  enabled: true
-  db:
-    name: querypostgresql
-activiti-cloud-audit:
-  enabled: true
+
 global:
   keycloak:
     url: "http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/auth"

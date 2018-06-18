@@ -1,0 +1,19 @@
+dependencies:
+- alias: querypostgresql
+  condition: activiti-cloud-query.enabled
+  name: postgresql
+  repository: https://kubernetes-charts.storage.googleapis.com
+  version: 0.11.0
+- condition: activiti-cloud-query.enabled
+  name: activiti-cloud-query
+  repository: http://jenkins-x-chartmuseum:8080
+  version: 7.0.5
+- condition: activiti-cloud-audit.enabled
+  name: activiti-cloud-audit
+  repository: http://jenkins-x-chartmuseum:8080
+  version: 7.0.1
+- alias: rabbitmq
+  condition: rabbitmq.enabled
+  name: rabbitmq-ha
+  repository: https://kubernetes-charts.storage.googleapis.com
+  version: 1.6.0

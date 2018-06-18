@@ -1,0 +1,21 @@
+activiti-cloud-query:
+  enabled: true
+  db:
+    name: querypostgresql
+activiti-cloud-audit:
+  enabled: true
+
+querypostgresql:
+   postgresPassword: query
+
+rabbitmq:
+  enabled: true
+  rabbitmqUsername: "guest"
+  rabbitmqPassword: "guest"
+  rabbitmqSTOMPPlugin:
+    enabled: true
+  rbac:
+    create: false
+  replicaCount: 1
+  ingress:
+    enabled: false

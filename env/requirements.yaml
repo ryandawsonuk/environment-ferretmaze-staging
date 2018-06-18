@@ -7,11 +7,6 @@ dependencies:
   name: exposecontroller
   repository: http://chartmuseum.build.cd.jenkins-x.io
   version: 2.3.58
-- alias: rabbitmq
-  condition: rabbitmq.enabled
-  name: rabbitmq-ha
-  repository: https://kubernetes-charts.storage.googleapis.com
-  version: 1.6.0
 - name: example-runtime-bundle
   repository: http://jenkins-x-chartmuseum:8080
   version: 7.0.19
@@ -19,23 +14,9 @@ dependencies:
   name: postgresql
   repository: https://kubernetes-charts.storage.googleapis.com
   version: 0.11.0
-- condition: keycloak.enabled
-  name: keycloak
-  repository: https://kubernetes-charts.storage.googleapis.com
-  version: 2.0.0
-- alias: querypostgresql
-  condition: activiti-cloud-query.enabled
-  name: postgresql
-  repository: https://kubernetes-charts.storage.googleapis.com
-  version: 0.11.0
-- condition: activiti-cloud-query.enabled
-  name: activiti-cloud-query
-  repository: http://jenkins-x-chartmuseum:8080
-  version: 7.0.5
-- condition: activiti-cloud-audit.enabled
-  name: activiti-cloud-audit
-  repository: http://jenkins-x-chartmuseum:8080
-  version: 7.0.1
 - name: infrastructure
   repository: file://subcharts/infrastructure
+  version: 0.1.0
+- name: application
+  repository: file://subcharts/application
   version: 0.1.0
