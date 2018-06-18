@@ -25,13 +25,13 @@ spec:
         backend:
           serviceName: {{ .Release.Name }}-rabbitmq
           servicePort: 15672
+#      - path: /audit
+#        backend:
+#          serviceName: {{ .Release.Name }}-activiti-cloud-audit
+#          servicePort: 80
       - path: /query
         backend:
           serviceName: {{ .Release.Name }}-activiti-cloud-query
-          servicePort: 80
-      - path: /audit
-        backend:
-          serviceName: {{ .Release.Name }}-activiti-cloud-audit
           servicePort: 80
 # to test ws would need to configure apollo to use path
 # as apollo client no longer expects to be on a gw path - https://github.com/Activiti/activiti-cloud-query-service/commit/0e05bf321d59d7373c5c0fa40506b514704dc92c
