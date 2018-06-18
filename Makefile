@@ -10,6 +10,8 @@ build: clean
 	helm repo add releases ${CHART_REPO}
 	helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
 	helm repo add jenkins-x http://chartmuseum.build.cd.jenkins-x.io
+	helm dependency build infrastructure
+	helm dependency build application
 	helm dependency build ${DIR}
 	helm lint ${DIR}
 
