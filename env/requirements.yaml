@@ -22,4 +22,4 @@ dependencies:
   version: 0.1.0
 - name: activiti-cloud-audit
   repository: http://jenkins-x-chartmuseum:8080
-  version: 7.0.5
+  version: 7.0.6
