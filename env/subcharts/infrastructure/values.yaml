@@ -1,0 +1,35 @@
+keycloak:
+  enabled: true
+  keycloak:
+    username: admin
+    password: admin
+    persistence:
+      deployPostgres: false
+      dbVendor: H2
+    ingress:
+      enabled: false
+    livenessProbe:
+      initialDelaySeconds: 140
+    extraVolumes: |
+      - name: realm-secret
+        secret:
+          secretName: {{ .Release.Name }}-realm-secret
+      - name: client-secret
+        secret:
+          secretName: {{ .Release.Name }}-client-secret
+    extraVolumeMounts: |
+      - name: realm-secret
+        mountPath: "/realm/"
+        readOnly: true
+      - name: client-secret
+        mountPath: "/client/"
+        readOnly: true
+    extraArgs: -Dkeycloak.import=/realm/activiti-realm.json
+#    postStartScript: |
+#      echo Starting postStartScript and sleeping 30 >> /opt/jboss/postStartLog;
+#      sleep 30;
+#      /opt/jboss/keycloak/bin/kcadm.sh update realms/master -s sslRequired=NONE --no-config --server http://localhost:8080/auth --realm master --user admin --password admin &>> /opt/jboss/postStartLog;
+#      /opt/jboss/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080/auth --realm activiti --user admin --password admin &>> /opt/jboss/postStartLog;
+#      /opt/jboss/keycloak/bin/kcadm.sh update clients/75dafa8a-15c0-480b-8d68-e39c51ba4dea -f /client/activiti-client.json -s 'redirectUris=["http://localhost:*","http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/*"]' -s 'webOrigins=["http://localhost:3000","http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/ui/"]
+#      echo Stopping postStartScript >> /opt/jboss/postStartLog;
+# see https://github.com/kubernetes/charts/pull/6108

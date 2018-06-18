@@ -36,6 +36,6 @@ dependencies:
   name: activiti-cloud-audit
   repository: http://jenkins-x-chartmuseum:8080
   version: 7.0.1
-- name: test
-  repository: file://subcharts/test
+- name: infrastructure
+  repository: file://subcharts/infrastructure
   version: 0.1.0
