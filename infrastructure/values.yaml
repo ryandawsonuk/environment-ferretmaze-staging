@@ -29,6 +29,14 @@ keycloak:
         mountPath: "/client/"
         readOnly: true
     extraArgs: -Dkeycloak.import=/realm/activiti-realm.json
+    preStartScript: |
+      /opt/jboss/keycloak/bin/add-user.sh -u admin -p admin
+      /opt/jboss/keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
+      cp /realm/activiti-realm.json .
+      sed -i  '.original' 's/localhost:3000/jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
+      rm -rf activiti-realm.json.original
+      sed -i  '.original' 's/localhost:\*/jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
+      rm -rf activiti-realm.json.original
 #    postStartScript: |
 #      echo Starting postStartScript and sleeping 30 >> /opt/jboss/postStartLog;
 #      sleep 30;
