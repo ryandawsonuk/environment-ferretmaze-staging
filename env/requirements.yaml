@@ -10,10 +10,6 @@ dependencies:
 - name: example-runtime-bundle
   repository: http://jenkins-x-chartmuseum:8080
   version: 7.0.21
-- alias: activitipostgresql
-  name: postgresql
-  repository: https://kubernetes-charts.storage.googleapis.com
-  version: 0.11.0
 - name: infrastructure
   repository: file://../infrastructure
   version: 0.1.0

@@ -22,13 +22,6 @@ expose:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-delete-policy: hook-succeeded
 
-activitipostgresql:
-   postgresPassword: activiti
-
-example-runtime-bundle:
-  db:
-    name: activitipostgresql
-
 global:
   keycloak:
     url: "http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/auth"
