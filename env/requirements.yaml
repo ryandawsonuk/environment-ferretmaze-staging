@@ -9,7 +9,7 @@ dependencies:
   version: 2.3.58
 - name: example-runtime-bundle
   repository: http://jenkins-x-chartmuseum:8080
-  version: 7.0.19
+  version: 7.0.20
 - alias: activitipostgresql
   name: postgresql
   repository: https://kubernetes-charts.storage.googleapis.com
