@@ -2,7 +2,7 @@ dependencies:
 - condition: activiti-cloud-query.enabled
   name: activiti-cloud-query
   repository: http://jenkins-x-chartmuseum:8080
-  version: 7.0.7
+  version: 7.0.8
 - condition: activiti-cloud-audit.enabled
   name: activiti-cloud-audit
   repository: http://jenkins-x-chartmuseum:8080
