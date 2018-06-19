@@ -20,7 +20,7 @@ rabbitmq:
   replicaCount: 1
   ingress:
     enabled: true
-#    hostName: "jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com"
+    hostName: "jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com"
     path: /rabbitmq
     annotations:
       kubernetes.io/ingress.class: nginx
