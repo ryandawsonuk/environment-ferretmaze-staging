@@ -17,14 +17,14 @@ spec:
         backend:
           serviceName: {{ .Release.Name }}-example-runtime-bundle
           servicePort: 80
-      - path: /
-        backend:
-          serviceName: {{ .Release.Name }}-keycloak-http
-          servicePort: 80
-      - path: /rabbitmq
-        backend:
-          serviceName: {{ .Release.Name }}-rabbitmq
-          servicePort: 15672
+#      - path: /
+#        backend:
+#          serviceName: {{ .Release.Name }}-keycloak-http
+#          servicePort: 80
+#      - path: /rabbitmq
+#        backend:
+#          serviceName: {{ .Release.Name }}-rabbitmq
+#          servicePort: 15672
 #      - path: /audit
 #        backend:
 #          serviceName: {{ .Release.Name }}-activiti-cloud-audit
