@@ -651,7 +651,7 @@
     "enabled" : true,
     "clientAuthenticatorType" : "client-secret",
     "secret" : "**********",
-    "redirectUris" : [ "http://localhost:*" ],
+    "redirectUris" : [ "http://localhost:*","http://activiti-cloud-demo-ui:*", "http://placeholder.com" ],
     "webOrigins" : [ "http://activiti-cloud-demo-ui:3000", "http://activiti-cloud-sso-idm-kub:30082", "http://activiti-cloud-demo-ui:30082", "http://localhost:3000" ],
     "notBefore" : 0,
     "bearerOnly" : false,

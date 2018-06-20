@@ -28,4 +28,5 @@ keycloak:
       /opt/jboss/keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
       cp /realm/activiti-realm.json .
       sed -i 's/localhost:3000/jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
-      sed -i 's/"http:\/\/localhost:\*"/"http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com:*","http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com","http://localhost:*"/g' activiti-realm.json
+      sed -i 's/activiti-cloud-demo-ui:\*/jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
+      sed -i 's/placeholder.com/jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
