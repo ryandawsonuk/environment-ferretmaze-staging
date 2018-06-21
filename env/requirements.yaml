@@ -19,3 +19,6 @@ dependencies:
 - name: activiti-cloud-gateway
   repository: http://jenkins-x-chartmuseum:8080
   version: 1.0.26
+- name: activiti-cloud-query
+  repository: http://jenkins-x-chartmuseum:8080
+  version: 7.0.10
