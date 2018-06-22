@@ -15,6 +15,13 @@ rabbitmq:
   rabbitmqPassword: "guest"
   rabbitmqSTOMPPlugin:
     enabled: true
+  resources:
+   limits:
+    cpu: 200m
+    memory: 1Gi
+   requests:
+    cpu: 100m
+    memory: 1Gi
   rbac:
     create: false
   replicaCount: 1
