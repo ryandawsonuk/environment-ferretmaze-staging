@@ -14,14 +14,6 @@ keycloak:
       annotations:
     livenessProbe:
       initialDelaySeconds: 140
-    resources:
-     limits:
-       cpu: "100m"
-       memory: "1024Mi"
-     requests:
-       cpu: "100m"
-       memory: "1024Mi"
-
     extraVolumes: |
       - name: realm-secret
         secret:
