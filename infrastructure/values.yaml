@@ -17,6 +17,8 @@ keycloak:
         nginx.ingress.kubernetes.io/enable-cors: "true"
         nginx.ingress.kubernetes.io/cors-allow-headers: "*"
         nginx.ingress.kubernetes.io/x-forwarded-prefix: "true"
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          add_header Access-Control-Allow-Origin $http_origin;
     livenessProbe:
       initialDelaySeconds: 140
     extraVolumes: |
