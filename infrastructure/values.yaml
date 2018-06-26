@@ -39,3 +39,4 @@ keycloak:
       sed -i 's/placeholder.com/jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
       sed -i 's/dummy.com/gw.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
       sed -i 's/activiti-cloud-sso-idm-kub:30082/gw.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
+      sed -i 's/activiti-cloud-demo-ui:3000/activiti-cloud-demo-ui.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
