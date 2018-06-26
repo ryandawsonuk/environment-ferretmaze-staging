@@ -13,6 +13,7 @@ rabbitmq:
   enabled: true
   rabbitmqUsername: "guest"
   rabbitmqPassword: "guest"
+  rabbitmqErlangCookie: 124567890abcdefghijklmnopqrstuv
   rabbitmqSTOMPPlugin:
     enabled: true
   resources:
@@ -23,7 +24,7 @@ rabbitmq:
     cpu: 100m
     memory: 1Gi
   rbac:
-    create: false
+    create: true
   replicaCount: 1
   ingress:
     enabled: true
