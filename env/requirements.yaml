@@ -11,9 +11,9 @@ dependencies:
   repository: http://jenkins-x-chartmuseum:8080
   version: 7.0.61
 - name: infrastructure
-  repository: activiticharts
+  repository: https://ryandawsonuk.github.io/activiticharts/
   version: 0.1.0
 - name: application
-  repository: activiticharts
+  repository: https://ryandawsonuk.github.io/activiticharts/
   version: 0.1.0
 
