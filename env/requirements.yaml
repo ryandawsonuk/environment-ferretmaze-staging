@@ -11,14 +11,9 @@ dependencies:
   repository: http://jenkins-x-chartmuseum:8080
   version: 7.0.61
 - name: infrastructure
-  repository: file://../infrastructure
+  repository: activiticharts
   version: 0.1.0
 - name: application
-  repository: file://../application
+  repository: activiticharts
   version: 0.1.0
-- name: activiti-cloud-gateway
-  repository: http://jenkins-x-chartmuseum:8080
-  version: 1.0.47
-- name: activiti-cloud-demo-ui
-  repository: http://jenkins-x-chartmuseum:8080
-  version: 7.0.4
+
