@@ -28,14 +28,11 @@ global:
 
 application:
   activiti-cloud-query:
-    enabled: true
     db:
       name: querypostgresql
       password: query
   querypostgresql:
      postgresPassword: query
-  activiti-cloud-audit:
-    enabled: true
   activiti-cloud-demo-ui:
     service:
       annotations:
@@ -50,18 +47,6 @@ application:
     rabbitmqUsername: "guest"
     rabbitmqPassword: "guest"
     rabbitmqErlangCookie: 124567890abcdefghijklmnopqrstuv
-    rabbitmqSTOMPPlugin:
-      enabled: true
-    resources:
-     limits:
-      cpu: 200m
-      memory: 1Gi
-     requests:
-      cpu: 100m
-      memory: 1Gi
-    rbac:
-      create: true
-    replicaCount: 1
     ingress:
       enabled: true
       hostName: "jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com"
@@ -95,19 +80,6 @@ infrastructure:
               add_header Access-Control-Allow-Methods "POST, GET, OPTIONS, PUT, PATCH, DELETE";
               add_header Access-Control-Allow-Credentials true;
               add_header Access-Control-Allow-Headers "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization";
-    # don't add the allowed origin automatically as then we get twice (because in realm config too?)
-    #          add_header Access-Control-Allow-Origin $http_origin;
-        livenessProbe:
-          initialDelaySeconds: 140
-        extraVolumes: |
-          - name: realm-secret
-            secret:
-              secretName: {{ .Release.Name }}-realm-secret
-        extraVolumeMounts: |
-          - name: realm-secret
-            mountPath: "/realm/"
-            readOnly: true
-        extraArgs: -Dkeycloak.import=activiti-realm.json
         preStartScript: |
           /opt/jboss/keycloak/bin/add-user.sh -u admin -p admin
           /opt/jboss/keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
