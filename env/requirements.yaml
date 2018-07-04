@@ -9,11 +9,10 @@ dependencies:
   version: 2.3.58
 - name: example-runtime-bundle
   repository: http://jenkins-x-chartmuseum:8080
-  version: 7.0.61
+  version: 7.0.62
 - name: infrastructure
   repository: https://ryandawsonuk.github.io/activiticharts/
   version: 0.1.0
 - name: application
   repository: https://ryandawsonuk.github.io/activiticharts/
   version: 0.1.1
-
