@@ -11,8 +11,8 @@ dependencies:
   repository: http://jenkins-x-chartmuseum:8080
   version: 7.0.62
 - name: infrastructure
-  repository: https://ryandawsonuk.github.io/activiticharts/
+  repository: https://activiti.github.io/activiti-cloud-charts/
   version: 0.1.0
 - name: application
-  repository: https://ryandawsonuk.github.io/activiticharts/
+  repository: https://activiti.github.io/activiti-cloud-charts/
   version: 0.1.1
