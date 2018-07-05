@@ -34,6 +34,7 @@ application:
   querypostgresql:
      postgresPassword: query
   activiti-cloud-demo-ui:
+    enabled: false
     service:
       annotations:
         fabric8.io/expose: "true"
