@@ -45,8 +45,9 @@ application:
       password: query
   querypostgresql:
      postgresPassword: query
+
   activiti-cloud-demo-ui:
-    enabled: false
+    enabled: "false"
 
 infrastructure:
   activiti-keycloak:
