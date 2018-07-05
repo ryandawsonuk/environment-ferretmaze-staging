@@ -16,3 +16,6 @@ dependencies:
 - name: application
   repository: https://activiti.github.io/activiti-cloud-charts/
   version: 0.1.2
+- name: activiti-cloud-demo-ui
+  repository: http://jenkins-x-chartmuseum:8080
+  version: 7.0.7
