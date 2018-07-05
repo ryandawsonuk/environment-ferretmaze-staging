@@ -74,14 +74,14 @@ infrastructure:
           sed -i 's/activiti-cloud-demo-ui:30082/activiti-keycloak.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
           sed -i 's/activiti-cloud-demo-ui:\*/activiti-keycloak.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
           sed -i 's/placeholder.com/activiti-keycloak.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
-          sed -i 's/dummy.com/gw.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
-          sed -i 's/activiti-cloud-sso-idm-kub:30082/gw.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
+          sed -i 's/dummy.com/activiti-cloud-gateway.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
+          sed -i 's/activiti-cloud-sso-idm-kub:30082/activiti-cloud-gateway.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
           sed -i 's/activiti-cloud-demo-ui:3000/activiti-cloud-demo-ui.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
   activiti-cloud-gateway:
     ingress:
       enabled: true
       hosts:
-        - "gw.jx-staging.activiti.envalfresco.com"
+        - "activiti-cloud-gateway.jx-staging.activiti.envalfresco.com"
       annotations:
         kubernetes.io/ingress.class: nginx
         nginx.ingress.kubernetes.io/rewrite-target: /
