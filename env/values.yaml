@@ -26,6 +26,17 @@ global:
   keycloak:
     url: "http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/auth"
 
+activiti-cloud-demo-ui:
+  service:
+    annotations:
+      fabric8.io/expose: "true"
+      fabric8.io/ingress.name: activiti
+      fabric8.io/ingress.path: /ui/
+      fabric8.io/ingress.annotations: "kubernetes.io/ingress.class: nginx"
+  gatewayUrl:  "http://activiti-cloud-gateway.jx-staging.activiti.envalfresco.com"
+  idmUrl: "http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/auth/realms/activiti/protocol/openid-connect/token"
+  idmClientId:  "activiti"
+
 application:
   activiti-cloud-query:
     db:
@@ -35,13 +46,6 @@ application:
      postgresPassword: query
   activiti-cloud-demo-ui:
     enabled: false
-    service:
-      annotations:
-        fabric8.io/expose: "true"
-        fabric8.io/ingress.annotations: "kubernetes.io/ingress.class: nginx"
-    gatewayUrl:  "http://activiti-cloud-gateway.jx-staging.activiti.envalfresco.com"
-    idmUrl: "http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/auth/realms/activiti/protocol/openid-connect/token"
-    idmClientId:  "activiti"
 
   rabbitmq:
     enabled: true
@@ -49,15 +53,7 @@ application:
     rabbitmqPassword: "guest"
     rabbitmqErlangCookie: 124567890abcdefghijklmnopqrstuv
     ingress:
-      enabled: true
-      hostName: "jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com"
-      path: /rabbitmq
-      annotations:
-        kubernetes.io/ingress.class: nginx
-        nginx.ingress.kubernetes.io/rewrite-target: /
-        nginx.ingress.kubernetes.io/enable-cors: "true"
-        nginx.ingress.kubernetes.io/cors-allow-headers: "X-Forwarded-For, X-Forwarded-Proto, X-Forwarded-Port, X-Forwarded-Prefix"
-        nginx.ingress.kubernetes.io/x-forwarded-prefix: "true"
+      enabled: false
 
 infrastructure:
   activiti-keycloak:
@@ -70,31 +66,27 @@ infrastructure:
           deployPostgres: false
           dbVendor: H2
         ingress:
-          enabled: true
-          path: /
-          hosts:
-            - "jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com"
+          enabled: false
+        service:
           annotations:
-            kubernetes.io/ingress.class: nginx
-            nginx.ingress.kubernetes.io/rewrite-target: /
-            nginx.ingress.kubernetes.io/configuration-snippet: |
-              add_header Access-Control-Allow-Methods "POST, GET, OPTIONS, PUT, PATCH, DELETE";
-              add_header Access-Control-Allow-Credentials true;
-              add_header Access-Control-Allow-Headers "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization";
+            fabric8.io/expose: "true"
+            fabric8.io/ingress.name: activiti
+            fabric8.io/ingress.annotations: |-
+              kubernetes.io/ingress.class: nginx
+              nginx.ingress.kubernetes.io/ingress.class: nginx
+              nginx.ingress.kubernetes.io/cors-allow-headers: X-Forwarded-For,X-Forwarded-Proto,X-Forwarded-Port,X-Forwarded-Prefix,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,X-CSRF-Token,Access-Control-Request-Headers,Access-Control-Request-Method,accept,Keep-Alive
+              nginx.ingress.kubernetes.io/enable-cors: true
+              nginx.ingress.kubernetes.io/x-forwarded-prefix: true
+            fabric8.io/ingress.path: /auth/
         preStartScript: |
-          /opt/jboss/keycloak/bin/add-user.sh -u admin -p admin
-          /opt/jboss/keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
           cp /realm/activiti-realm.json .
-          sed -i 's/activiti-cloud-demo-ui:30082/jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
-          sed -i 's/activiti-cloud-demo-ui:\*/jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
-          sed -i 's/placeholder.com/jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
-          sed -i 's/dummy.com/gw.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
-          sed -i 's/activiti-cloud-sso-idm-kub:30082/gw.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
-          sed -i 's/activiti-cloud-demo-ui:3000/activiti-cloud-demo-ui.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
+          sed -i "s/activiti-cloud-demo-ui:30082/$HOST_KEY\/ui/g" activiti-realm.json
+          sed -i "s/activiti-cloud-demo-ui:\*/$HOST_KEY:*/g" activiti-realm.json
   activiti-cloud-gateway:
     service:
       annotations:
         fabric8.io/expose: "true"
+        fabric8.io/ingress.name: activiti
         kubernetes.io/ingress.class: nginx
         fabric8.io/ingress.annotations: |-
           kubernetes.io/ingress.class: nginx
