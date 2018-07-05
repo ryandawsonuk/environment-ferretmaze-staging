@@ -47,14 +47,6 @@ application:
   activiti-cloud-demo-ui:
     enabled: false
 
-  rabbitmq:
-    enabled: true
-    rabbitmqUsername: "guest"
-    rabbitmqPassword: "guest"
-    rabbitmqErlangCookie: 124567890abcdefghijklmnopqrstuv
-    ingress:
-      enabled: false
-
 infrastructure:
   activiti-keycloak:
     keycloak:
