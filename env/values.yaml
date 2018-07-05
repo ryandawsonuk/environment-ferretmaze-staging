@@ -37,7 +37,7 @@ activiti-cloud-demo-ui:
   gatewayUrl:  "http://activiti-cloud-gateway.jx-staging.activiti.envalfresco.com"
   idmUrl: "http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/auth/realms/activiti/protocol/openid-connect/token"
   idmClientId:  "activiti"
-  enabled: "false"
+  enabled: false
 
 application:
   activiti-cloud-query:
@@ -48,7 +48,7 @@ application:
      postgresPassword: query
 
   activiti-cloud-demo-ui:
-    enabled: "false"
+    enabled: false
 
 infrastructure:
   activiti-keycloak:
