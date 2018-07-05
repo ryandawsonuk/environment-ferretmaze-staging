@@ -1,7 +1,7 @@
 ---
 apiVersion: "v1"
 data:
-  exposeUrl: "http://keycloak-http.jx-staging.placeholder.com"
+  exposeUrl: {{ .Values.keycloak.baseUrl }}
 kind: "ConfigMap"
 metadata:
   annotations:

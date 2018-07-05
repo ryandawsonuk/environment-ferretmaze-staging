@@ -26,6 +26,9 @@ global:
   keycloak:
     url: "http://jx-staging-quickstart-http.jx-staging.activiti.envalfresco.com/auth"
 
+keycloak:
+  baseUrl: "http://keycloak-http.jx-staging.activiti.envalfresco.com"
+
 activiti-cloud-demo-ui:
   service:
     annotations:
