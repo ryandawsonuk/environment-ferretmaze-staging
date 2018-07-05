@@ -60,6 +60,19 @@ infrastructure:
           dbVendor: H2
         ingress:
           enabled: false
+        extraEnv: |
+         - name: PROXY_ADDRESS_FORWARDING
+           value: "true"
+         - name: EXPOSE_URL
+           valueFrom:
+             configMapKeyRef:
+               name: {{ .Release.Name }}-keycloak-http
+               key: expose-keycloak-service-key
+         - name: HOST_KEY
+           valueFrom:
+             configMapKeyRef:
+               name: {{ .Release.Name }}-keycloak-http
+               key: host-key
         service:
           annotations:
             fabric8.io/expose: "true"
