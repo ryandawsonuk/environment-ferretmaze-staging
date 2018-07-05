@@ -22,4 +22,4 @@ metadata:
     expose-no-protocol.service-key.config.fabric8.io/{{ .Release.Name }}-keycloak-http: expose-no-protocol-keycloak-service-key
     expose-full-no-protocol.service-key.config.fabric8.io/{{ .Release.Name }}-keycloak-http: expose-full-no-protocol-keycloak-service-key
   labels: {}
-  name: {{ .Release.Name }}-keycloak-http
+  name: {{ .Release.Name }}-keycloak-http-env
