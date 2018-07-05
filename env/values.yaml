@@ -37,8 +37,7 @@ application:
   activiti-cloud-demo-ui:
     ingress:
       enabled: true
-      hosts:
-        - "activiti-cloud-demo-ui.jx-staging.activiti.envalfresco.com"
+      hostName: "activiti-cloud-demo-ui.jx-staging.activiti.envalfresco.com"
       annotations:
         kubernetes.io/ingress.class: nginx
     gatewayUrl:  "http://activiti-cloud-gateway.jx-staging.activiti.envalfresco.com"
@@ -80,8 +79,7 @@ infrastructure:
   activiti-cloud-gateway:
     ingress:
       enabled: true
-      hosts:
-        - "activiti-cloud-gateway.jx-staging.activiti.envalfresco.com"
+      hostName: "activiti-cloud-gateway.jx-staging.activiti.envalfresco.com"
       annotations:
         kubernetes.io/ingress.class: nginx
         nginx.ingress.kubernetes.io/rewrite-target: /
