@@ -39,11 +39,11 @@ application:
     db:
       name: querypostgresql
       password: query
-    extraEnv: |
-      - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
-        value: "SimpleProcess"
-      - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
-        value: "*"
+#    extraEnv: |
+#    - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
+#      value: "SimpleProcess"
+#    - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
+#      value: "*"
 
   querypostgresql:
      postgresPassword: query
@@ -59,11 +59,11 @@ application:
     idmClientId:  "activiti"
 
   activiti-cloud-audit:
-    extraEnv: |
-      - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
-        value: "SimpleProcess"
-      - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
-        value: "*"
+#    extraEnv: |
+#      - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
+#        value: "SimpleProcess"
+#      - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
+#        value: "*"
 
 infrastructure:
   activiti-keycloak:
