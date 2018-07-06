@@ -12,7 +12,7 @@ dependencies:
   version: 7.0.65
 - name: infrastructure
   repository: https://activiti.github.io/activiti-cloud-charts/
-  version: 0.1.4
+  version: 0.1.5
 - name: application
   repository: https://activiti.github.io/activiti-cloud-charts/
-  version: 0.1.5
+  version: 0.1.6
