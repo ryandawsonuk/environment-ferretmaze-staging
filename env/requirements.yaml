@@ -9,7 +9,7 @@ dependencies:
   version: 2.3.58
 - name: example-runtime-bundle
   repository: http://jenkins-x-chartmuseum:8080
-  version: 7.0.65
+  version: 7.0.66
 - name: infrastructure
   repository: https://activiti.github.io/activiti-cloud-charts/
   version: 0.1.5
