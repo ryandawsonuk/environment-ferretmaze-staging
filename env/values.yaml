@@ -27,13 +27,27 @@ global:
   keycloak:
     url: "http://activiti-keycloak.jx-staging.activiti.envalfresco.com/auth"
 
+example-runtime-bundle:
+  extraEnv: |
+    - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
+      value: "SimpleProcess"
+    - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
+      value: "*"
+
 application:
   activiti-cloud-query:
     db:
       name: querypostgresql
       password: query
+    extraEnv: |
+      - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
+        value: "SimpleProcess"
+      - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
+        value: "*"
+
   querypostgresql:
      postgresPassword: query
+
   activiti-cloud-demo-ui:
     ingress:
       enabled: true
@@ -43,6 +57,13 @@ application:
     gatewayUrl:  "http://activiti-cloud-gateway.jx-staging.activiti.envalfresco.com"
     idmUrl: "http://activiti-keycloak.jx-staging.activiti.envalfresco.com/auth/realms/activiti/protocol/openid-connect/token"
     idmClientId:  "activiti"
+
+  activiti-cloud-audit:
+    extraEnv: |
+      - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
+        value: "SimpleProcess"
+      - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
+        value: "*"
 
 infrastructure:
   activiti-keycloak:
