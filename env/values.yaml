@@ -28,6 +28,10 @@ global:
     url: "http://activiti-keycloak.jx-staging.activiti.envalfresco.com/auth"
 
 example-runtime-bundle:
+  image:
+    repository: miguelruiz/example-runtime-bundle
+    tag: latest
+    pullPolicy: Always
   extraEnv: |
     - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
       value: "SimpleProcess"
@@ -36,6 +40,10 @@ example-runtime-bundle:
 
 application:
   activiti-cloud-query:
+    image:
+      repository: miguelruiz/activiti-cloud-query
+      tag: latest
+      pullPolicy: Always
     db:
       name: querypostgresql
       password: query
@@ -59,6 +67,10 @@ application:
     idmClientId:  "activiti"
 
   activiti-cloud-audit:
+    image:
+      repository: miguelruiz/activiti-cloud-audit
+      tag: latest
+      pullPolicy: Always
     extraEnv: |
       - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
         value: "SimpleProcess"
