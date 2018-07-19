@@ -28,6 +28,8 @@ global:
     url: "http://activiti-keycloak.jx-staging.activiti.envalfresco.com/auth"
 
 example-runtime-bundle:
+  db:
+    deployPostgres: true
   image:
     repository: miguelruiz/example-runtime-bundle
     tag: latest
@@ -45,8 +47,7 @@ application:
       tag: latest
       pullPolicy: Always
     db:
-      name: querypostgresql
-      password: query
+      deployPostgres: true
     extraEnv: |
       - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
         value: "SimpleProcess"
@@ -57,6 +58,7 @@ application:
      postgresPassword: query
 
   activiti-cloud-demo-ui:
+    enabled: true
     ingress:
       enabled: true
       hostName: "activiti-cloud-demo-ui.jx-staging.activiti.envalfresco.com"
