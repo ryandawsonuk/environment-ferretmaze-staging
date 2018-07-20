@@ -77,6 +77,8 @@ application:
       repository: activiti/activiti-cloud-audit
       tag: latest
       pullPolicy: Always
+    db:
+      deployPostgres: true
     extraEnv: |
       - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
         value: "SimpleProcess"
