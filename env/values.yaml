@@ -27,10 +27,6 @@ global:
   keycloak:
     url: "http://activiti-keycloak.jx-staging.activiti.envalfresco.com/auth"
 
-runtime-bundle:
-  db:
-    deployPostgres: true
-
 example-runtime-bundle:
   db:
     deployPostgres: true
