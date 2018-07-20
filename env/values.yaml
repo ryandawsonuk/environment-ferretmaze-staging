@@ -35,7 +35,7 @@ example-runtime-bundle:
   db:
     deployPostgres: true
   image:
-    repository: miguelruiz/example-runtime-bundle
+    repository: activiti/example-runtime-bundle
     tag: latest
     pullPolicy: Always
   extraEnv: |
@@ -47,7 +47,7 @@ example-runtime-bundle:
 application:
   activiti-cloud-query:
     image:
-      repository: miguelruiz/activiti-cloud-query
+      repository: activiti/activiti-cloud-query
       tag: latest
       pullPolicy: Always
     db:
@@ -74,7 +74,7 @@ application:
 
   activiti-cloud-audit:
     image:
-      repository: miguelruiz/activiti-cloud-audit
+      repository: activiti/activiti-cloud-audit
       tag: latest
       pullPolicy: Always
     extraEnv: |
