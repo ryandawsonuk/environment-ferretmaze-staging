@@ -58,9 +58,6 @@ application:
       - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
         value: "*"
 
-  querypostgresql:
-     postgresPassword: query
-
   activiti-cloud-demo-ui:
     enabled: true
     ingress:
