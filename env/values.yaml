@@ -28,10 +28,6 @@ global:
     url: "http://activiti-keycloak.jx-staging.activiti.envalfresco.com/auth"
 
 example-runtime-bundle:
-  activitipostgresql:
-    service:
-      annotations:
-        fabric8.io/expose: "true"
   db:
     deployPostgres: true
   image:
@@ -46,10 +42,6 @@ example-runtime-bundle:
 
 application:
   activiti-cloud-query:
-    querypostgresql:
-      service:
-        annotations:
-          fabric8.io/expose: "true"
     image:
       repository: activiti/activiti-cloud-query
       tag: latest
@@ -74,12 +66,8 @@ application:
     idmClientId:  "activiti"
 
   activiti-cloud-audit:
-    auditpostgresql:
-      service:
-        annotations:
-          fabric8.io/expose: "true"
     image:
-      repository: ryandawsonuk/activiti-cloud-audit
+      repository: activiti/activiti-cloud-audit
       tag: latest
       pullPolicy: Always
     db:
