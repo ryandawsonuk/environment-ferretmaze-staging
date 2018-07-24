@@ -31,8 +31,6 @@ example-runtime-bundle:
   db:
     deployPostgres: true
   image:
-    repository: activiti/example-runtime-bundle
-    tag: latest
     pullPolicy: Always
   extraEnv: |
     - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
@@ -43,8 +41,6 @@ example-runtime-bundle:
 application:
   activiti-cloud-query:
     image:
-      repository: activiti/activiti-cloud-query
-      tag: latest
       pullPolicy: Always
     db:
       deployPostgres: true
@@ -53,6 +49,11 @@ application:
         value: "SimpleProcess"
       - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
         value: "*"
+
+  activiti-cloud-connector:
+    enabled: true
+    image:
+      pullPolicy: Always
 
   activiti-cloud-demo-ui:
     enabled: true
@@ -67,8 +68,6 @@ application:
 
   activiti-cloud-audit:
     image:
-      repository: activiti/activiti-cloud-audit
-      tag: latest
       pullPolicy: Always
     db:
       deployPostgres: true
