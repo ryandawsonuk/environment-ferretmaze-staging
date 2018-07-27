@@ -31,6 +31,8 @@ example-runtime-bundle:
   db:
     deployPostgres: true
   image:
+    repository: activiti/example-runtime-bundle
+    tag: latest
     pullPolicy: Always
   extraEnv: |
     - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
