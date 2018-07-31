@@ -93,42 +93,20 @@ infrastructure:
         persistence:
           deployPostgres: false
           dbVendor: H2
-#        ingress:
-#          enabled: true
-#          path: /
-#          hosts:
-#            - "activiti-keycloak.jx-staging.activiti.envalfresco.com"
-#          annotations:
-#            kubernetes.io/ingress.class: nginx
-#            nginx.ingress.kubernetes.io/rewrite-target: /
-#            nginx.ingress.kubernetes.io/configuration-snippet: |
-#              add_header Access-Control-Allow-Methods "POST, GET, OPTIONS, PUT, PATCH, DELETE";
-#              add_header Access-Control-Allow-Credentials true;
-#              add_header Access-Control-Allow-Headers "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization";
         service:
           annotations:
             fabric8.io/expose: "true"
-        extraEnv: |
-         - name: EXPOSE_URL
-           valueFrom:
-             configMapKeyRef:
-               name: {{ .Release.Name }}-keycloak-http
-               key: expose-keycloak-service-key
-         - name: HOST_KEY
-           valueFrom:
-             configMapKeyRef:
-               name: {{ .Release.Name }}-keycloak-http
-               key: host-key
-#        preStartScript: |
-#          /opt/jboss/keycloak/bin/add-user.sh -u admin -p admin
-#          /opt/jboss/keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
-#          cp /realm/activiti-realm.json .
-#          sed -i 's/activiti-cloud-demo-ui:30082/activiti-keycloak.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
-#          sed -i 's/activiti-cloud-demo-ui:\*/activiti-keycloak.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
-#          sed -i 's/placeholder.com/activiti-keycloak.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
-#          sed -i 's/dummy.com/activiti-cloud-gateway.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
-#          sed -i 's/activiti-cloud-sso-idm-kub:30082/activiti-cloud-gateway.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
-#          sed -i 's/activiti-cloud-demo-ui:3000/activiti-cloud-demo-ui.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
+#        extraEnv: |
+#         - name: EXPOSE_URL
+#           valueFrom:
+#             configMapKeyRef:
+#               name: {{ .Release.Name }}-keycloak-http
+#               key: expose-keycloak-service-key
+#         - name: HOST_KEY
+#           valueFrom:
+#             configMapKeyRef:
+#               name: {{ .Release.Name }}-keycloak-http
+#               key: host-key
         preStartScript: |
           /opt/jboss/keycloak/bin/add-user.sh -u admin -p admin
           /opt/jboss/keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
