@@ -4,7 +4,7 @@ expose:
     - 4
   Annotations:
     helm.sh/hook: post-install,post-upgrade
-    helm.sh/hook-delete-policy: hook-succeeded
+#    helm.sh/hook-delete-policy: hook-succeeded
 
 cleanup:
   Args: 
