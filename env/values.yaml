@@ -111,11 +111,11 @@ infrastructure:
           /opt/jboss/keycloak/bin/add-user.sh -u admin -p admin
           /opt/jboss/keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
           cp /realm/activiti-realm.json .
-          sed -i "s/activiti-cloud-demo-ui:30082/$HOST_KEY\/ui/g" activiti-realm.json
-          sed -i "s/activiti-cloud-demo-ui:\*/$HOST_KEY:*/g" activiti-realm.json
-          sed -i "s/placeholder.com/$HOST_KEY:*/g" activiti-realm.json
-          sed -i "s/dummy.com/$HOST_KEY:*/g" activiti-realm.json
-          sed -i "s/activiti-cloud-sso-idm-kub:30082/$HOST_KEY/g" activiti-realm.json
+#          sed -i "s/activiti-cloud-demo-ui:30082/$HOST_KEY\/ui/g" activiti-realm.json
+#          sed -i "s/activiti-cloud-demo-ui:\*/$HOST_KEY:*/g" activiti-realm.json
+#          sed -i "s/placeholder.com/$HOST_KEY:*/g" activiti-realm.json
+#          sed -i "s/dummy.com/$HOST_KEY:*/g" activiti-realm.json
+#          sed -i "s/activiti-cloud-sso-idm-kub:30082/$HOST_KEY/g" activiti-realm.json
   activiti-cloud-gateway:
 #    ingress:
 #      enabled: true
