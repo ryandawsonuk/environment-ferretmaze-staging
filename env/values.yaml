@@ -96,7 +96,7 @@ infrastructure:
         service:
           annotations:
             fabric8.io/expose: "true"
-#        extraEnv: |
+        extraEnv: |
 #         - name: EXPOSE_URL
 #           valueFrom:
 #             configMapKeyRef:
