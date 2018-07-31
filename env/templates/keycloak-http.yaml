@@ -21,5 +21,6 @@ metadata:
     expose-no-path.service-key.config.fabric8.io/{{ .Release.Name }}-keycloak-http: expose-no-path-keycloak-service-key
     expose-no-protocol.service-key.config.fabric8.io/{{ .Release.Name }}-keycloak-http: expose-no-protocol-keycloak-service-key
     expose-full-no-protocol.service-key.config.fabric8.io/{{ .Release.Name }}-keycloak-http: expose-full-no-protocol-keycloak-service-key
+    configmap.fabric8.io/update-on-change: {{ .Release.Name }}-keycloak
   labels: {}
   name: {{ .Release.Name }}-keycloak-http
