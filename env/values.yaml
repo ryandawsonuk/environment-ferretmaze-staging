@@ -4,14 +4,14 @@ expose:
     - 4
   Annotations:
     helm.sh/hook: post-install,post-upgrade
-    helm.sh/hook-delete-policy: hook-succeeded
+#    helm.sh/hook-delete-policy: hook-succeeded
 
 cleanup:
   Args: 
     - --cleanup
   Annotations:
     helm.sh/hook: pre-delete
-    helm.sh/hook-delete-policy: hook-succeeded
+#    helm.sh/hook-delete-policy: hook-succeeded
 expose:
   config:
     domain: activiti.envalfresco.com
@@ -21,7 +21,7 @@ expose:
     tlsacme: "false"
   Annotations:
     helm.sh/hook: post-install,post-upgrade
-    helm.sh/hook-delete-policy: hook-succeeded
+#    helm.sh/hook-delete-policy: hook-succeeded
 
 
 global:
