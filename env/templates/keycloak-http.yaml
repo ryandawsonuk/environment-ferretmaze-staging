@@ -1,7 +1,7 @@
 ---
 apiVersion: "v1"
 data:
-  exposeUrl: ""
+  exposeUrl: "http://thisshouldbereplaced.activiti.envalfresco.com"
 kind: "ConfigMap"
 metadata:
   annotations:
