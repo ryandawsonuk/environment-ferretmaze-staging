@@ -7,15 +7,6 @@ dependencies:
   name: exposecontroller
   repository: http://chartmuseum.build.cd.jenkins-x.io
   version: 2.3.69
-#- name: example-runtime-bundle
-#  repository: http://jenkins-x-chartmuseum:8080
-#  version: 7.0.76
-#- name: infrastructure
-#  repository: https://activiti.github.io/activiti-cloud-charts/
-#  version: 0.1.6
-#- name: application
-#  repository: https://activiti.github.io/activiti-cloud-charts/
-#  version: 0.1.16
 - name: infrastructure
   repository: https://activiti.github.io/activiti-cloud-charts/
   version: 0.2.0
