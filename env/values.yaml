@@ -24,127 +24,127 @@ expose:
 #    helm.sh/hook-delete-policy: hook-succeeded
 
 
-global:
-  keycloak:
-    url: "http://activiti-keycloak.jx-staging.activiti.envalfresco.com/auth"
-
-example-runtime-bundle:
-  db:
-    deployPostgres: true
-  image:
-    repository: activiti/example-runtime-bundle
-    tag: latest
-    pullPolicy: Always
-  extraEnv: |
-    - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
-      value: "SimpleProcess"
-    - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
-      value: "*"
-
-application:
-  activiti-cloud-query:
-    image:
-      pullPolicy: Always
-    db:
-      deployPostgres: true
-    extraEnv: |
-      - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
-        value: "SimpleProcess"
-      - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
-        value: "*"
-
-  activiti-cloud-connector:
-    enabled: true
-    image:
-      pullPolicy: Always
-
-  activiti-cloud-demo-ui:
-    enabled: true
-#    ingress:
-#      enabled: true
-#      hostName: "activiti-cloud-demo-ui.jx-staging.activiti.envalfresco.com"
+#global:
+#  keycloak:
+#    url: "http://activiti-keycloak.jx-staging.activiti.envalfresco.com/auth"
+#
+#example-runtime-bundle:
+#  db:
+#    deployPostgres: true
+#  image:
+#    repository: activiti/example-runtime-bundle
+#    tag: latest
+#    pullPolicy: Always
+#  extraEnv: |
+#    - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
+#      value: "SimpleProcess"
+#    - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
+#      value: "*"
+#
+#application:
+#  activiti-cloud-query:
+#    image:
+#      pullPolicy: Always
+#    db:
+#      deployPostgres: true
+#    extraEnv: |
+#      - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
+#        value: "SimpleProcess"
+#      - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
+#        value: "*"
+#
+#  activiti-cloud-connector:
+#    enabled: true
+#    image:
+#      pullPolicy: Always
+#
+#  activiti-cloud-demo-ui:
+#    enabled: true
+##    ingress:
+##      enabled: true
+##      hostName: "activiti-cloud-demo-ui.jx-staging.activiti.envalfresco.com"
+##      annotations:
+##        kubernetes.io/ingress.class: nginx
+#    service:
 #      annotations:
-#        kubernetes.io/ingress.class: nginx
-    service:
-      annotations:
-        fabric8.io/expose: "true"
-    gatewayUrl:  "http://activiti-cloud-gateway.jx-staging.activiti.envalfresco.com"
-    idmUrl: "http://activiti-keycloak.jx-staging.activiti.envalfresco.com/auth/realms/activiti/protocol/openid-connect/token"
-    idmClientId:  "activiti"
-
-  activiti-cloud-audit:
-    image:
-      pullPolicy: Always
-    db:
-      deployPostgres: true
-    extraEnv: |
-      - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
-        value: "SimpleProcess"
-      - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
-        value: "*"
-
-infrastructure:
-  activiti-keycloak:
-    keycloak:
-      enabled: true
-      keycloak:
-        username: admin
-        password: admin
-        persistence:
-          deployPostgres: false
-          dbVendor: H2
-        service:
-          annotations:
-            fabric8.io/expose: "true"
-            fabric8.io/ingress.name: activiti
-            fabric8.io/ingress.annotations: |-
-              kubernetes.io/ingress.class: nginx
-              nginx.ingress.kubernetes.io/ingress.class: nginx
-              nginx.ingress.kubernetes.io/cors-allow-headers: X-Forwarded-For,X-Forwarded-Proto,X-Forwarded-Port,X-Forwarded-Prefix,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,X-CSRF-Token,Access-Control-Request-Headers,Access-Control-Request-Method,accept,Keep-Alive
-              nginx.ingress.kubernetes.io/enable-cors: true
-              nginx.ingress.kubernetes.io/x-forwarded-prefix: true
-            fabric8.io/ingress.path: /auth/
-        extraEnv: |
-         - name: PROXY_ADDRESS_FORWARDING
-           value: "true"
-         - name: EXPOSE_URL
-           valueFrom:
-             configMapKeyRef:
-               name: {{ .Release.Name }}-keycloak-http
-               key: expose-keycloak-service-key
-         - name: HOST_KEY
-           valueFrom:
-             configMapKeyRef:
-               name: {{ .Release.Name }}-keycloak-http
-               key: host-key
-        preStartScript: |
-          /opt/jboss/keycloak/bin/add-user.sh -u admin -p admin
-          /opt/jboss/keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
-          cp /realm/activiti-realm.json .
-          sed -i "s/activiti-cloud-demo-ui:30082/$HOST_KEY\/ui/g" activiti-realm.json
-          sed -i "s/activiti-cloud-demo-ui:\*/$HOST_KEY:*/g" activiti-realm.json
-          sed -i "s/placeholder.com/$HOST_KEY:*/g" activiti-realm.json
-          sed -i "s/dummy.com/$HOST_KEY:*/g" activiti-realm.json
-          sed -i "s/activiti-cloud-sso-idm-kub:30082/$HOST_KEY/g" activiti-realm.json
-  activiti-cloud-gateway:
-#    ingress:
+#        fabric8.io/expose: "true"
+#    gatewayUrl:  "http://activiti-cloud-gateway.jx-staging.activiti.envalfresco.com"
+#    idmUrl: "http://activiti-keycloak.jx-staging.activiti.envalfresco.com/auth/realms/activiti/protocol/openid-connect/token"
+#    idmClientId:  "activiti"
+#
+#  activiti-cloud-audit:
+#    image:
+#      pullPolicy: Always
+#    db:
+#      deployPostgres: true
+#    extraEnv: |
+#      - name: ACTIVITI_CLOUD_SECURITY_GROUP_HR_RBMYAPP_POLICY_WRITE
+#        value: "SimpleProcess"
+#      - name: ACTIVITI_CLOUD_SECURITY_GROUP_TESTGROUP_RBMYAPP_POLICY_WRITE
+#        value: "*"
+#
+#infrastructure:
+#  activiti-keycloak:
+#    keycloak:
 #      enabled: true
-#      hostName: "activiti-cloud-gateway.jx-staging.activiti.envalfresco.com"
+#      keycloak:
+#        username: admin
+#        password: admin
+#        persistence:
+#          deployPostgres: false
+#          dbVendor: H2
+#        service:
+#          annotations:
+#            fabric8.io/expose: "true"
+#            fabric8.io/ingress.name: activiti
+#            fabric8.io/ingress.annotations: |-
+#              kubernetes.io/ingress.class: nginx
+#              nginx.ingress.kubernetes.io/ingress.class: nginx
+#              nginx.ingress.kubernetes.io/cors-allow-headers: X-Forwarded-For,X-Forwarded-Proto,X-Forwarded-Port,X-Forwarded-Prefix,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,X-CSRF-Token,Access-Control-Request-Headers,Access-Control-Request-Method,accept,Keep-Alive
+#              nginx.ingress.kubernetes.io/enable-cors: true
+#              nginx.ingress.kubernetes.io/x-forwarded-prefix: true
+#            fabric8.io/ingress.path: /auth/
+#        extraEnv: |
+#         - name: PROXY_ADDRESS_FORWARDING
+#           value: "true"
+#         - name: EXPOSE_URL
+#           valueFrom:
+#             configMapKeyRef:
+#               name: {{ .Release.Name }}-keycloak-http
+#               key: expose-keycloak-service-key
+#         - name: HOST_KEY
+#           valueFrom:
+#             configMapKeyRef:
+#               name: {{ .Release.Name }}-keycloak-http
+#               key: host-key
+#        preStartScript: |
+#          /opt/jboss/keycloak/bin/add-user.sh -u admin -p admin
+#          /opt/jboss/keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
+#          cp /realm/activiti-realm.json .
+#          sed -i "s/activiti-cloud-demo-ui:30082/$HOST_KEY\/ui/g" activiti-realm.json
+#          sed -i "s/activiti-cloud-demo-ui:\*/$HOST_KEY:*/g" activiti-realm.json
+#          sed -i "s/placeholder.com/$HOST_KEY:*/g" activiti-realm.json
+#          sed -i "s/dummy.com/$HOST_KEY:*/g" activiti-realm.json
+#          sed -i "s/activiti-cloud-sso-idm-kub:30082/$HOST_KEY/g" activiti-realm.json
+#  activiti-cloud-gateway:
+##    ingress:
+##      enabled: true
+##      hostName: "activiti-cloud-gateway.jx-staging.activiti.envalfresco.com"
+##      annotations:
+##        kubernetes.io/ingress.class: nginx
+##        nginx.ingress.kubernetes.io/rewrite-target: /
+##        nginx.ingress.kubernetes.io/enable-cors: true
+##        nginx.ingress.kubernetes.io/cors-allow-headers: "*"
+##        nginx.ingress.kubernetes.io/x-forwarded-prefix: true
+#    service:
 #      annotations:
+#        fabric8.io/expose: "true"
 #        kubernetes.io/ingress.class: nginx
-#        nginx.ingress.kubernetes.io/rewrite-target: /
-#        nginx.ingress.kubernetes.io/enable-cors: true
-#        nginx.ingress.kubernetes.io/cors-allow-headers: "*"
-#        nginx.ingress.kubernetes.io/x-forwarded-prefix: true
-    service:
-      annotations:
-        fabric8.io/expose: "true"
-        kubernetes.io/ingress.class: nginx
-        fabric8.io/ingress.name: activiti
-  #      fabric8.io/ingress.path: /gw/
-        fabric8.io/ingress.annotations: |-
-          kubernetes.io/ingress.class: nginx
-          nginx.ingress.kubernetes.io/enable-cors: true
-          nginx.ingress.kubernetes.io/cors-allow-headers: "*"
-          nginx.ingress.kubernetes.io/x-forwarded-prefix: true
-  #        nginx.ingress.kubernetes.io/rewrite-target: /
+#        fabric8.io/ingress.name: activiti
+#  #      fabric8.io/ingress.path: /gw/
+#        fabric8.io/ingress.annotations: |-
+#          kubernetes.io/ingress.class: nginx
+#          nginx.ingress.kubernetes.io/enable-cors: true
+#          nginx.ingress.kubernetes.io/cors-allow-headers: "*"
+#          nginx.ingress.kubernetes.io/x-forwarded-prefix: true
+#  #        nginx.ingress.kubernetes.io/rewrite-target: /
