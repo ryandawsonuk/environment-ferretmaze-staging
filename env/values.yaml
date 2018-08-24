@@ -32,13 +32,7 @@ global:
 infrastructure:
   activiti-keycloak:
     keycloak:
-      enabled: true
       keycloak:
-        username: admin
-        password: admin
-        persistence:
-          deployPostgres: false
-          dbVendor: H2
         ingress:
           enabled: true
           path: /
@@ -51,16 +45,7 @@ infrastructure:
               add_header Access-Control-Allow-Methods "POST, GET, OPTIONS, PUT, PATCH, DELETE";
               add_header Access-Control-Allow-Credentials true;
               add_header Access-Control-Allow-Headers "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization";
-        preStartScript: |
-          /opt/jboss/keycloak/bin/add-user.sh -u admin -p admin
-          /opt/jboss/keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
-          cp /realm/activiti-realm.json .
-          sed -i 's/activiti-cloud-demo-ui:30082/activiti-keycloak.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
-          sed -i 's/activiti-cloud-demo-ui:\*/activiti-keycloak.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
-          sed -i 's/placeholder.com/activiti-keycloak.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
-          sed -i 's/dummy.com/activiti-cloud-gateway.jx-staging.activiti.envalfresco.com:*/g' activiti-realm.json
-          sed -i 's/activiti-cloud-sso-idm-kub:30082/activiti-cloud-gateway.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
-          sed -i 's/activiti-cloud-demo-ui:3000/activiti-cloud-demo-ui.jx-staging.activiti.envalfresco.com/g' activiti-realm.json
+
   activiti-cloud-gateway:
     ingress:
       enabled: true
