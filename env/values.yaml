@@ -52,7 +52,24 @@ activiti-cloud:
       enabled: false
     activiti-cloud-connector:
       enabled: false
-
+    activiti-cloud-query:
+      extraEnv: |
+        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_SHOWSQL"
+          value: "true"
+        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_SHOW_SQL"
+          value: "true"
+        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_FORMATSQL"
+          value: "true"
+        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_TYPE"
+          value: "trace"
+        - name: "LOGGING_LEVEL_ORG_HIBERNATE_SQL"
+          value: "DEBUG"
+        - name: "LOGGING_LEVEL_ORG_HIBERNATE_TYPE_DESCRIPTOR_SQL_BASICBINDER"
+          value: "TRACE"
+        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_USESQLCOMMENTS"
+          value: "true"
+        - name: "DEBUG"
+          value: "true"
   infrastructure:
     activiti-keycloak:
       keycloak:
