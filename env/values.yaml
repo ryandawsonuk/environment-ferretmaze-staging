@@ -24,85 +24,85 @@ expose:
     helm.sh/hook-delete-policy: hook-succeeded
 
 
-global:
-  keycloak:
-    url: "http://activiti-keycloak.activiti.envalfresco.com/auth"
-  gateway:
-    host: &gatewayhost "activiti-cloud-gateway.activiti.envalfresco.com" 
- 
-runtime-bundle:
-  enabled: false
-activiti-cloud-connector:
-  enabled: false  
-activiti-cloud-modeling:
-  enabled: true
-
-application:
-  runtime-bundle:
-    enabled: false
-  activiti-cloud-connector:
-    enabled: false
-
-activiti-cloud:
-  activiti-cloud-modeling:
-    enabled: true
-
-  application:
-    runtime-bundle:
-      enabled: false
-    activiti-cloud-connector:
-      enabled: false
-    activiti-cloud-query:
-      extraEnv: |
-        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_SHOWSQL"
-          value: "true"
-        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_SHOW_SQL"
-          value: "true"
-        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_FORMATSQL"
-          value: "true"
-        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_TYPE"
-          value: "trace"
-        - name: "LOGGING_LEVEL_ORG_HIBERNATE_SQL"
-          value: "DEBUG"
-        - name: "LOGGING_LEVEL_ORG_HIBERNATE_TYPE_DESCRIPTOR_SQL_BASICBINDER"
-          value: "TRACE"
-        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_USESQLCOMMENTS"
-          value: "true"
-        - name: "DEBUG"
-          value: "true"
-  infrastructure:
-    activiti-keycloak:
-      keycloak:
-        enabled: true
-        keycloak:
-          ingress:
-            enabled: true
-            path: /
-            proxyBufferSize: "16k"
-            hosts:
-              - "activiti-keycloak.activiti.envalfresco.com"
-            annotations:
-              kubernetes.io/ingress.class: nginx
-              nginx.ingress.kubernetes.io/rewrite-target: /
-              nginx.ingress.kubernetes.io/configuration-snippet: |
-                more_set_headers 'Access-Control-Allow-Methods: "POST, GET, OPTIONS, PUT, PATCH, DELETE"';
-                more_set_headers 'Access-Control-Allow-Credentials: true';
-                more_set_headers 'Access-Control-Allow-Headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,authorization"';
-                more_set_headers 'Access-Control-Allow-Origin: $http_origin';
-              nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
-          preStartScript: |
-            /opt/jboss/keycloak/bin/add-user.sh -u admin -p admin
-            /opt/jboss/keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
-            cp /realm/activiti-realm.json .
-            sed -i 's/placeholder.com/*/g' activiti-realm.json
-    
-    activiti-cloud-gateway:
-      ingress:
-        enabled: true
-        hostName: "activiti-cloud-gateway.activiti.envalfresco.com"
-        annotations:
-          kubernetes.io/ingress.class: nginx
-          nginx.ingress.kubernetes.io/rewrite-target: /
-          nginx.ingress.kubernetes.io/enable-cors: true
-          nginx.ingress.kubernetes.io/cors-allow-headers: "*"
-          nginx.ingress.kubernetes.io/x-forwarded-prefix: true
+#global:
+#  keycloak:
+#    url: "http://activiti-keycloak.activiti.envalfresco.com/auth"
+#  gateway:
+#    host: &gatewayhost "activiti-cloud-gateway.activiti.envalfresco.com"
+#
+#runtime-bundle:
+#  enabled: false
+#activiti-cloud-connector:
+#  enabled: false
+#activiti-cloud-modeling:
+#  enabled: true
+#
+#application:
+#  runtime-bundle:
+#    enabled: false
+#  activiti-cloud-connector:
+#    enabled: false
+#
+#activiti-cloud:
+#  activiti-cloud-modeling:
+#    enabled: true
+#
+#  application:
+#    runtime-bundle:
+#      enabled: false
+#    activiti-cloud-connector:
+#      enabled: false
+#    activiti-cloud-query:
+#      extraEnv: |
+#        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_SHOWSQL"
+#          value: "true"
+#        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_SHOW_SQL"
+#          value: "true"
+#        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_FORMATSQL"
+#          value: "true"
+#        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_TYPE"
+#          value: "trace"
+#        - name: "LOGGING_LEVEL_ORG_HIBERNATE_SQL"
+#          value: "DEBUG"
+#        - name: "LOGGING_LEVEL_ORG_HIBERNATE_TYPE_DESCRIPTOR_SQL_BASICBINDER"
+#          value: "TRACE"
+#        - name: "SPRING_JPA_PROPERTIES_HIBERNATE_USESQLCOMMENTS"
+#          value: "true"
+#        - name: "DEBUG"
+#          value: "true"
+#  infrastructure:
+#    activiti-keycloak:
+#      keycloak:
+#        enabled: true
+#        keycloak:
+#          ingress:
+#            enabled: true
+#            path: /
+#            proxyBufferSize: "16k"
+#            hosts:
+#              - "activiti-keycloak.activiti.envalfresco.com"
+#            annotations:
+#              kubernetes.io/ingress.class: nginx
+#              nginx.ingress.kubernetes.io/rewrite-target: /
+#              nginx.ingress.kubernetes.io/configuration-snippet: |
+#                more_set_headers 'Access-Control-Allow-Methods: "POST, GET, OPTIONS, PUT, PATCH, DELETE"';
+#                more_set_headers 'Access-Control-Allow-Credentials: true';
+#                more_set_headers 'Access-Control-Allow-Headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,authorization"';
+#                more_set_headers 'Access-Control-Allow-Origin: $http_origin';
+#              nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+#          preStartScript: |
+#            /opt/jboss/keycloak/bin/add-user.sh -u admin -p admin
+#            /opt/jboss/keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
+#            cp /realm/activiti-realm.json .
+#            sed -i 's/placeholder.com/*/g' activiti-realm.json
+#
+#    activiti-cloud-gateway:
+#      ingress:
+#        enabled: true
+#        hostName: "activiti-cloud-gateway.activiti.envalfresco.com"
+#        annotations:
+#          kubernetes.io/ingress.class: nginx
+#          nginx.ingress.kubernetes.io/rewrite-target: /
+#          nginx.ingress.kubernetes.io/enable-cors: true
+#          nginx.ingress.kubernetes.io/cors-allow-headers: "*"
+#          nginx.ingress.kubernetes.io/x-forwarded-prefix: true
